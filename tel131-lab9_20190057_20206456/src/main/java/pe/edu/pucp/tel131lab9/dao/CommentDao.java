@@ -12,7 +12,7 @@ public class CommentDao extends DaoBase{
 
         ArrayList<Comment> comments = new ArrayList<>();
 
-        String sql = "SELECT * FROM comments c";
+        String sql = "SELECT * FROM comments c;";
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
@@ -75,6 +75,6 @@ public class CommentDao extends DaoBase{
         comment.setEmployeeId(rs.getInt("c.employee_id"));
         comment.setPostId(rs.getInt("c.post_id"));
         comment.setComment(rs.getString("c.comment"));
-        comment.setDatetime(rs.getDate("c.datetime"));
+        comment.setDatetime(rs.getTimestamp("c.datetime"));
     }
 }
