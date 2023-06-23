@@ -59,6 +59,20 @@ public class PostDao extends DaoBase{
 
     public Post savePost(Post post) {
 
+        try(Connection conn = this.getConnection()){
+            String sql = "INSERT INTO post (title,content,employee_id,datetime)\n" +
+                    "VALUES (?,?,?,now())";
+            try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, post.getTitle());
+                pstmt.setString(2, post.getContent());
+                pstmt.setInt(3, post.getEmployeeId());
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return post;
     }
 
@@ -74,5 +88,7 @@ public class PostDao extends DaoBase{
         employee.setLastName(rs.getString("e.last_name"));
         post.setEmployee(employee);
     }
+
+
 
 }
