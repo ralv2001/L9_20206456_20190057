@@ -1,7 +1,5 @@
 package pe.edu.pucp.tel131lab9.bean;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Comment {

@@ -12,7 +12,7 @@ public class CommentDao extends DaoBase{
 
         ArrayList<Comment> comments = new ArrayList<>();
 
-        String sql = "SELECT * FROM comments c";
+        String sql = "SELECT * FROM comments c;";
 
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
